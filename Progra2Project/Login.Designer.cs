@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             btniniciarjuego = new Button();
+            btnsalir = new Button();
             SuspendLayout();
             // 
             // label1
@@ -76,17 +78,36 @@
             btniniciarjuego.UseVisualStyleBackColor = true;
             btniniciarjuego.Click += btniniciarjuego_Click;
             // 
+            // btnsalir
+            // 
+            btnsalir.BackColor = Color.Red;
+            btnsalir.Font = new Font("Showcard Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnsalir.ImageAlign = ContentAlignment.TopCenter;
+            btnsalir.Location = new Point(562, 3);
+            btnsalir.Name = "btnsalir";
+            btnsalir.RightToLeft = RightToLeft.Yes;
+            btnsalir.Size = new Size(75, 23);
+            btnsalir.TabIndex = 4;
+            btnsalir.Text = "X";
+            btnsalir.TextAlign = ContentAlignment.TopCenter;
+            btnsalir.UseVisualStyleBackColor = false;
+            btnsalir.Click += btnsalir_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(659, 397);
+            BackColor = Color.FromArgb(255, 192, 192);
+            ClientSize = new Size(639, 371);
+            Controls.Add(btnsalir);
             Controls.Add(btniniciarjuego);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Login";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
             ResumeLayout(false);
@@ -99,5 +120,6 @@
         private Label label2;
         private Label label3;
         private Button btniniciarjuego;
+        private Button btnsalir;
     }
 }

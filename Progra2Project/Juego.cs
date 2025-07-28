@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Progra2Project
@@ -17,14 +18,11 @@ namespace Progra2Project
         public Juego()
         {
             InitializeComponent();
+            OcultarControlesPregunta();
         }
 
         private void Juego_Load(object sender, EventArgs e)
         {
-            CargarPreguntas();
-
-            progressBar1.Maximum = preguntas.Count;
-            progressBar1.Value = 0;
             btnreiniciar.Visible = false;
             btnsiguiente.Visible = false;
 
@@ -32,8 +30,6 @@ namespace Progra2Project
             rb2.CheckedChanged += OpcionSeleccionada;
             rb3.CheckedChanged += OpcionSeleccionada;
             rb4.CheckedChanged += OpcionSeleccionada;
-
-            MostrarPregunta();
         }
 
         private void CargarPreguntas()
@@ -58,6 +54,8 @@ namespace Progra2Project
             preguntas.Add(new Pregunta("¿Cuántos días tiene un año bisiesto?", new[] { "364", "365", "366", "367" }, 2));
             preguntas.Add(new Pregunta("¿Qué instrumento tiene cuerdas?", new[] { "Piano", "Violín", "Trombón", "Flauta" }, 1));
             preguntas.Add(new Pregunta("¿En qué país está la Torre Eiffel?", new[] { "Italia", "Francia", "España", "Inglaterra" }, 1));
+
+            preguntas = preguntas.OrderBy(p => Guid.NewGuid()).ToList(); // aleatorizar
         }
 
         private void MostrarPregunta()
@@ -79,13 +77,15 @@ namespace Progra2Project
 
             rb1.Checked = rb2.Checked = rb3.Checked = rb4.Checked = false;
 
-            rb1.Text = preguntas[preguntaActual].Opciones[0];
-            rb2.Text = preguntas[preguntaActual].Opciones[1];
-            rb3.Text = preguntas[preguntaActual].Opciones[2];
-            rb4.Text = preguntas[preguntaActual].Opciones[3];
+            var pregunta = preguntas[preguntaActual];
 
+            rb1.Text = pregunta.Opciones[0];
+            rb2.Text = pregunta.Opciones[1];
+            rb3.Text = pregunta.Opciones[2];
+            rb4.Text = pregunta.Opciones[3];
+
+            label1.Text = $"Pregunta {preguntaActual + 1}: {pregunta.Texto}";
             rb1.ForeColor = rb2.ForeColor = rb3.ForeColor = rb4.ForeColor = Color.Black;
-            label1.Text = $"Pregunta {preguntaActual + 1}: {preguntas[preguntaActual].Texto}";
 
             seRespondio = false;
             btnsiguiente.Visible = false;
@@ -94,23 +94,19 @@ namespace Progra2Project
             rb2.CheckedChanged += OpcionSeleccionada;
             rb3.CheckedChanged += OpcionSeleccionada;
             rb4.CheckedChanged += OpcionSeleccionada;
-
             cargandoPregunta = false;
         }
 
         private void OpcionSeleccionada(object sender, EventArgs e)
         {
             if (cargandoPregunta || seRespondio) return;
-
             seRespondio = true;
-            int respuestaSeleccionada = -1;
 
+            int respuestaSeleccionada = -1;
             if (rb1.Checked) respuestaSeleccionada = 0;
             else if (rb2.Checked) respuestaSeleccionada = 1;
             else if (rb3.Checked) respuestaSeleccionada = 2;
             else if (rb4.Checked) respuestaSeleccionada = 3;
-
-            if (respuestaSeleccionada == -1) return;
 
             respuestasJugador.Add(respuestaSeleccionada);
             int correcta = preguntas[preguntaActual].RespuestaCorrecta;
@@ -118,14 +114,14 @@ namespace Progra2Project
             if (respuestaSeleccionada == correcta)
             {
                 puntaje++;
-                progressBar1.Value = Math.Min(progressBar1.Value + 1, preguntas.Count);
                 ObtenerRadioButton(respuestaSeleccionada).ForeColor = Color.Green;
+                progressBar1.Value = Math.Min(progressBar1.Value + 1, preguntas.Count);
                 btnsiguiente.Visible = true;
             }
             else
             {
                 ObtenerRadioButton(respuestaSeleccionada).ForeColor = Color.Red;
-                MessageBox.Show("❌ Respuesta incorrecta.", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("❌ Respuesta incorrecta.", "Incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 preguntaActual++;
                 MostrarPregunta();
             }
@@ -163,15 +159,47 @@ namespace Progra2Project
             progressBar1.Value = 0;
             btnsiguiente.Visible = false;
             btnreiniciar.Visible = false;
+            CargarPreguntas(); // volver a mezclar
             MostrarPregunta();
         }
 
-        private void rb1_CheckedChanged(object sender, EventArgs e) { }
-        private void rb2_CheckedChanged(object sender, EventArgs e) { }
-        private void rb3_CheckedChanged(object sender, EventArgs e) { }
-        private void rb4_CheckedChanged(object sender, EventArgs e) { }
-        private void progressBar1_Click(object sender, EventArgs e) { }
-        private void label1_Click(object sender, EventArgs e) { }
+        public void HabilitarPreguntas()
+        {
+            btnhabilitarpreguntas.Visible = false;
+            label1.Visible = true;
+            rb1.Visible = true;
+            rb2.Visible = true;
+            rb3.Visible = true;
+            rb4.Visible = true;
+            btnsiguiente.Visible = false;
+            progressBar1.Visible = true;
+
+            CargarPreguntas();
+            progressBar1.Maximum = preguntas.Count;
+            progressBar1.Value = 0;
+            MostrarPregunta();
+        }
+
+        private void btnhabilitarpreguntas_Click(object sender, EventArgs e)
+        {
+            HabilitarPreguntas();
+        }
+
+        private void btnsalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void OcultarControlesPregunta()
+        {
+            label1.Visible = false;
+            rb1.Visible = false;
+            rb2.Visible = false;
+            rb3.Visible = false;
+            rb4.Visible = false;
+            btnsiguiente.Visible = false;
+            progressBar1.Visible = false;
+        }
     }
 
     public class Pregunta

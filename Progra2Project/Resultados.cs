@@ -66,5 +66,10 @@ namespace Progra2Project
         {
             Application.Exit();
         }
+
+        private void btnsalir_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
     }
 }

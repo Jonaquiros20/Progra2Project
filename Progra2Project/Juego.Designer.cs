@@ -6,17 +6,13 @@
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
+            if (disposing && (components != null)) components.Dispose();
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Juego));
             label1 = new Label();
             rb1 = new RadioButton();
             rb2 = new RadioButton();
@@ -25,124 +21,124 @@
             btnsiguiente = new Button();
             btnreiniciar = new Button();
             progressBar1 = new ProgressBar();
+            btnhabilitarpreguntas = new Button();
+            btnsalir = new Button();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(100, 30);
             label1.Name = "label1";
-            label1.Size = new Size(165, 21);
+            label1.Size = new Size(114, 15);
             label1.TabIndex = 0;
             label1.Text = "Texto de la pregunta";
-            label1.Click += label1_Click;
             // 
             // rb1
             // 
-            rb1.AutoSize = true;
-            rb1.Location = new Point(100, 80);
+            rb1.Location = new Point(100, 60);
             rb1.Name = "rb1";
-            rb1.Size = new Size(85, 19);
+            rb1.Size = new Size(104, 24);
             rb1.TabIndex = 1;
-            rb1.TabStop = true;
-            rb1.Text = "Respuesta 1";
-            rb1.UseVisualStyleBackColor = true;
-            rb1.CheckedChanged += rb1_CheckedChanged;
             // 
             // rb2
             // 
-            rb2.AutoSize = true;
-            rb2.Location = new Point(100, 110);
+            rb2.Location = new Point(100, 90);
             rb2.Name = "rb2";
-            rb2.Size = new Size(85, 19);
+            rb2.Size = new Size(104, 24);
             rb2.TabIndex = 2;
-            rb2.TabStop = true;
-            rb2.Text = "Respuesta 2";
-            rb2.UseVisualStyleBackColor = true;
-            rb2.CheckedChanged += rb2_CheckedChanged;
             // 
             // rb3
             // 
-            rb3.AutoSize = true;
-            rb3.Location = new Point(100, 140);
+            rb3.Location = new Point(100, 120);
             rb3.Name = "rb3";
-            rb3.Size = new Size(85, 19);
+            rb3.Size = new Size(104, 24);
             rb3.TabIndex = 3;
-            rb3.TabStop = true;
-            rb3.Text = "Respuesta 3";
-            rb3.UseVisualStyleBackColor = true;
-            rb3.CheckedChanged += rb3_CheckedChanged;
             // 
             // rb4
             // 
-            rb4.AutoSize = true;
-            rb4.Location = new Point(100, 170);
+            rb4.Location = new Point(100, 150);
             rb4.Name = "rb4";
-            rb4.Size = new Size(85, 19);
+            rb4.Size = new Size(104, 24);
             rb4.TabIndex = 4;
-            rb4.TabStop = true;
-            rb4.Text = "Respuesta 4";
-            rb4.UseVisualStyleBackColor = true;
-            rb4.CheckedChanged += rb4_CheckedChanged;
             // 
             // btnsiguiente
             // 
-            btnsiguiente.Location = new Point(100, 210);
+            btnsiguiente.Location = new Point(100, 190);
             btnsiguiente.Name = "btnsiguiente";
-            btnsiguiente.Size = new Size(100, 30);
+            btnsiguiente.Size = new Size(90, 30);
             btnsiguiente.TabIndex = 5;
             btnsiguiente.Text = "Siguiente";
-            btnsiguiente.UseVisualStyleBackColor = true;
             btnsiguiente.Click += btnsiguiente_Click;
             // 
             // btnreiniciar
             // 
-            btnreiniciar.Location = new Point(220, 210);
+            btnreiniciar.Location = new Point(200, 190);
             btnreiniciar.Name = "btnreiniciar";
-            btnreiniciar.Size = new Size(100, 30);
+            btnreiniciar.Size = new Size(90, 30);
             btnreiniciar.TabIndex = 6;
             btnreiniciar.Text = "Reiniciar";
-            btnreiniciar.UseVisualStyleBackColor = true;
             btnreiniciar.Click += btnreiniciar_Click;
             // 
             // progressBar1
             // 
-            progressBar1.Location = new Point(100, 260);
+            progressBar1.Location = new Point(100, 290);
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(220, 23);
+            progressBar1.Size = new Size(250, 20);
             progressBar1.TabIndex = 7;
-            progressBar1.Click += progressBar1_Click;
+            // 
+            // btnhabilitarpreguntas
+            // 
+            btnhabilitarpreguntas.Location = new Point(100, 240);
+            btnhabilitarpreguntas.Name = "btnhabilitarpreguntas";
+            btnhabilitarpreguntas.Size = new Size(190, 30);
+            btnhabilitarpreguntas.TabIndex = 8;
+            btnhabilitarpreguntas.Text = "Habilitar Preguntas";
+            btnhabilitarpreguntas.Click += btnhabilitarpreguntas_Click;
+            // 
+            // btnsalir
+            // 
+            btnsalir.BackColor = Color.Red;
+            btnsalir.Font = new Font("Showcard Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnsalir.ImageAlign = ContentAlignment.TopCenter;
+            btnsalir.Location = new Point(424, 3);
+            btnsalir.Name = "btnsalir";
+            btnsalir.RightToLeft = RightToLeft.Yes;
+            btnsalir.Size = new Size(75, 23);
+            btnsalir.TabIndex = 9;
+            btnsalir.Text = "X";
+            btnsalir.TextAlign = ContentAlignment.TopCenter;
+            btnsalir.UseVisualStyleBackColor = false;
+            btnsalir.Click += btnsalir_Click;
             // 
             // Juego
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(255, 192, 192);
             ClientSize = new Size(500, 350);
-            Controls.Add(progressBar1);
-            Controls.Add(btnreiniciar);
-            Controls.Add(btnsiguiente);
-            Controls.Add(rb4);
-            Controls.Add(rb3);
-            Controls.Add(rb2);
-            Controls.Add(rb1);
+            Controls.Add(btnsalir);
             Controls.Add(label1);
+            Controls.Add(rb1);
+            Controls.Add(rb2);
+            Controls.Add(rb3);
+            Controls.Add(rb4);
+            Controls.Add(btnsiguiente);
+            Controls.Add(btnreiniciar);
+            Controls.Add(progressBar1);
+            Controls.Add(btnhabilitarpreguntas);
+            FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Juego";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Juego";
             Load += Juego_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
-        #endregion
-
         private Label label1;
-        private RadioButton rb1;
-        private RadioButton rb2;
-        private RadioButton rb3;
-        private RadioButton rb4;
-        private Button btnsiguiente;
-        private Button btnreiniciar;
+        private RadioButton rb1, rb2, rb3, rb4;
+        private Button btnsiguiente, btnreiniciar, btnhabilitarpreguntas;
         private ProgressBar progressBar1;
+        private Button btnsalir;
     }
 }

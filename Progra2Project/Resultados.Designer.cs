@@ -17,66 +17,73 @@
 
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.btnReiniciar = new System.Windows.Forms.Button();
-            this.btnCerrar = new System.Windows.Forms.Button();
-            this.lblPuntaje = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Resultados));
+            listView1 = new ListView();
+            btnReiniciar = new Button();
+            btnCerrar = new Button();
+            lblPuntaje = new Label();
+            SuspendLayout();
             // 
             // listView1
             // 
-            this.listView1.FullRowSelect = true;
-            this.listView1.Location = new System.Drawing.Point(50, 80);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(700, 250);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            listView1.BackColor = SystemColors.ScrollBar;
+            listView1.FullRowSelect = true;
+            listView1.Location = new Point(50, 80);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(700, 250);
+            listView1.TabIndex = 0;
+            listView1.UseCompatibleStateImageBehavior = false;
             // 
             // btnReiniciar
             // 
-            this.btnReiniciar.Location = new System.Drawing.Point(200, 360);
-            this.btnReiniciar.Name = "btnReiniciar";
-            this.btnReiniciar.Size = new System.Drawing.Size(100, 30);
-            this.btnReiniciar.TabIndex = 1;
-            this.btnReiniciar.Text = "Reiniciar";
-            this.btnReiniciar.UseVisualStyleBackColor = true;
-            this.btnReiniciar.Click += new System.EventHandler(this.btnReiniciar_Click);
+            btnReiniciar.BackColor = Color.Lime;
+            btnReiniciar.Location = new Point(200, 360);
+            btnReiniciar.Name = "btnReiniciar";
+            btnReiniciar.Size = new Size(100, 30);
+            btnReiniciar.TabIndex = 1;
+            btnReiniciar.Text = "Reiniciar";
+            btnReiniciar.UseVisualStyleBackColor = false;
+            btnReiniciar.Click += btnReiniciar_Click;
             // 
             // btnCerrar
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(500, 360);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(100, 30);
-            this.btnCerrar.TabIndex = 2;
-            this.btnCerrar.Text = "Cerrar";
-            this.btnCerrar.UseVisualStyleBackColor = true;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            btnCerrar.BackColor = Color.Red;
+            btnCerrar.Location = new Point(500, 360);
+            btnCerrar.Name = "btnCerrar";
+            btnCerrar.Size = new Size(100, 30);
+            btnCerrar.TabIndex = 2;
+            btnCerrar.Text = "Cerrar";
+            btnCerrar.UseVisualStyleBackColor = false;
+            btnCerrar.Click += btnCerrar_Click;
             // 
             // lblPuntaje
             // 
-            this.lblPuntaje.AutoSize = true;
-            this.lblPuntaje.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblPuntaje.Location = new System.Drawing.Point(50, 30);
-            this.lblPuntaje.Name = "lblPuntaje";
-            this.lblPuntaje.Size = new System.Drawing.Size(90, 21);
-            this.lblPuntaje.TabIndex = 3;
-            this.lblPuntaje.Text = "Tu puntaje:";
+            lblPuntaje.AutoSize = true;
+            lblPuntaje.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblPuntaje.Location = new Point(50, 30);
+            lblPuntaje.Name = "lblPuntaje";
+            lblPuntaje.Size = new Size(95, 21);
+            lblPuntaje.TabIndex = 3;
+            lblPuntaje.Text = "Tu puntaje:";
             // 
             // Resultados
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 420);
-            this.Controls.Add(this.lblPuntaje);
-            this.Controls.Add(this.btnCerrar);
-            this.Controls.Add(this.btnReiniciar);
-            this.Controls.Add(this.listView1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Resultados";
-            this.Text = "Resultados";
-            this.Load += new System.EventHandler(this.Resultados_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(255, 192, 192);
+            ClientSize = new Size(814, 418);
+            Controls.Add(lblPuntaje);
+            Controls.Add(btnCerrar);
+            Controls.Add(btnReiniciar);
+            Controls.Add(listView1);
+            FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Name = "Resultados";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Resultados";
+            Load += Resultados_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

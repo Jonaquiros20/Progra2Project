@@ -1,3 +1,6 @@
+using System;
+using System.Windows.Forms;
+
 namespace Progra2Project
 {
     public partial class Login : Form
@@ -9,21 +12,28 @@ namespace Progra2Project
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btniniciarjuego_Click(object sender, EventArgs e)
         {
-            Juego juego = new Juego(); // Instancia del formulario Juego
-            juego.Show();              // Muestra el formulario
+            // Crear y mostrar el formulario del juego
+            Juego juego = new Juego();
+            juego.Show();
 
-            this.Hide();               // Oculta el formulario actual (Inicio)
+            // Llamar al método HabilitarPreguntas para iniciar el juego
+            juego.HabilitarPreguntas();
+
+            // Ocultar el formulario de login sin cerrar la aplicación
+            this.Hide();
         }
 
+        private void btnsalir_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
     }
 }
