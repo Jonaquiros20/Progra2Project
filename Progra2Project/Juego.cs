@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-
+// Este código es parte de una aplicación C# Windows Forms para un juego de preguntas.
+// Esto lo hizo Dara:p
+// El código incluye una clase para la lógica del juego, que maneja preguntas, respuestas y puntuación.
+// También incluye una clase para mostrar los resultados después de que se completa el juego.
 namespace Progra2Project
 {
     public partial class Juego : Form
